@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Cadastro de produto</title>
+</head>
+<body>
+    <main id="form_container">
+        <div id="form_header">
+            <h1 id="form_title">Cadastro</h1>
+        </div>
+
+        <form action="tela_cadastro.php" id="form" method="post">
+            <div id="input_container">
+                <a href="tela_pesquisa.php" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Pesquisar
+                </a>
+                <div class="input-box">
+                    <label for="numero_rastreio" class="form-label">Número de rastreio</label>
+                    <div class="input-field">
+                        <input type="text" name="numero_rastreio" id="numero_rastreio" class="form-control" placeholder="Número de rastreio">
+                        <i class="fa-solid fa-barcode"></i>
+                    </div>
+                    <span class="error"></span>
+                    <!-- <div id="resultado"></div> <div id="resultado"></div> Div para exibir o resultado da verificação -->
+                </div>
+
+                <div class="input-box">
+                    <label for="nome_produto" class="form-label">Nome do produto</label>
+                    <div class="input-field">
+                        <input type="text" name="nome_produto" id="nome_produto" class="form-control" placeholder="Nome do produto">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <span class="error"></span>
+                </div>
+
+                <div class="input-box">
+                    <label for="email" class="form-label">E-mail</label>
+                    <div class="input-field">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="exemplo@gmail.com">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <span class="error"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-default">
+                <i class="fa-solid fa-check"></i> Cadastrar produto
+            </button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
