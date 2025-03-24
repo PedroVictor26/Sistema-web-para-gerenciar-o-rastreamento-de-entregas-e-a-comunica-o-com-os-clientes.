@@ -1,11 +1,10 @@
 <?php
 include "conexao.php";
 
-$pesquisa = $_POST['busca'] ?? '';
+$busca = $_POST['busca'] ?? '';
 
-if (!empty($pesquisa)) {
-
-    $sql = "SELECT * FROM rastreamento WHERE numero_rastreio LIKE '%$pesquisa%'";
+if (!empty($busca)) {
+    $sql = "SELECT * FROM rastreamento WHERE numero_rastreio LIKE '%$busca%'";
     $dados = mysqli_query($mysqli, $sql);
 
     if ($dados) {
@@ -33,20 +32,18 @@ if (!empty($pesquisa)) {
                         <td>$email</td>
                         <td>Preparando</td>
                         <td>
-                        <a href='cadastro_edit.php?id=$id' class='btn btn-success'>Editar</a>
-                        <a href='excluir.php?id=$id' class='btn btn-danger'>Excluir</a> </td>
+                            <a href='cadastro_edit.php?id=$id' class='btn btn-success'>Editar</a>
+                            <button type='button' class='btn btn-danger delete-btn' data-id='$id'>Excluir</button>
+                        </td>
                     </tr>";
             }
 
             echo '</tbody></table>';
         } else {
-            echo "<p>Nenhum resultado encontrado para '$pesquisa'.</p>";
+            echo "<p>Nenhum resultado encontrado para '$busca'.</p>";
         }
     } else {
         echo "Erro na consulta: " . mysqli_error($mysqli);
     }
-
-
 }
-
 ?>

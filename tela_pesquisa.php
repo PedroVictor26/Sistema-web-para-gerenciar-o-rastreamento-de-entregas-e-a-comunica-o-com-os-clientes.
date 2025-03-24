@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
+
 <body>
     <?php include "conexao.php"; ?>
 
@@ -26,16 +28,19 @@
     </div>
 
     <script>
-        $(document).ready(function () {
-            $("#buscaInput").on("input", function () {
+        $(document).ready(function() {
+            $("#buscaInput").on("input", function() {
                 let busca = $(this).val();
                 if (busca.length >= 1) {
                     $.ajax({
                         url: "pesquisar_rastreio.php",
                         method: "POST",
-                        data: { busca: busca },
-                        success: function (data) {
+                        data: {
+                            busca: busca
+                        },
+                        success: function(data) {
                             $("#resultados").html(data);
+                            setupDeleteButtons(); // Adiciona o evento de clique aos botões de exclusão
                         }
                     });
                 } else {
@@ -50,17 +55,41 @@
                     $.ajax({
                         url: "pesquisar_rastreio.php",
                         method: "POST",
-                        data: { busca: busca },
-                        success: function (data) {
+                        data: {
+                            busca: busca
+                        },
+                        success: function(data) {
                             $("#resultados").html(data);
+                            setupDeleteButtons(); // Adiciona o evento de clique aos botões de exclusão
                         }
                     });
                 } else {
                     $("#resultados").empty();
                 }
             });
+
+            function setupDeleteButtons() {
+                $(".delete-btn").on("click", function() {
+                    let id = $(this).data("id");
+                    console.log('ID do registro a ser excluído:', id);
+                    if (confirm("Tem certeza que deseja excluir este registro?")) {
+                        $.ajax({
+                            url: "func_delete.php",
+                            method: "POST",
+                            data: {
+                                id: id
+                            },
+                            success: function(response) {
+                                console.log('Resposta do servidor:', response);
+                                alert(response);
+                                $("#buscaInput").trigger("input");
+                            }
+                        });
+                    }
+                });
+            }
         });
     </script>
-
 </body>
+
 </html>
