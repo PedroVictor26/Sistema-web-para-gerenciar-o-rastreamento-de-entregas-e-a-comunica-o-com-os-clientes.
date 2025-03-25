@@ -6,9 +6,10 @@
     $senha = "";
 
     $mysqli = new mysqli($hostname, $user, $senha, $database);
-    if ($mysqli->connect_errno) {
-        echo "Falha ao conectar: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    } else {
-        echo "Conectado!";
-    };
+    
+    // if ($mysqli->connect_error) {
+    //     die("Conexão falhou: " . $mysqli->connect_error);
+    //     } else {
+    //         echo "Conexão realizada com sucesso!";
+    //     }  
 ?>

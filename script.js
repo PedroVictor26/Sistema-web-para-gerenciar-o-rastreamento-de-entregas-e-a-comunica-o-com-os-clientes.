@@ -38,7 +38,6 @@ form.addEventListener('submit', function (e) {
         nomeProdutoBox.classList.add('valid');
     }
 
-    // Validação do Email
     const emailInput = document.getElementById('email');
     const emailBox = emailInput.closest('.input-box');
     const emailError = emailBox.querySelector('.error');
@@ -46,24 +45,17 @@ form.addEventListener('submit', function (e) {
     emailBox.classList.remove('invalid', 'valid');
     const emailValidation = emailIsValid(emailInput.value)
     if (!emailValidation.isValid) {
-
         emailError.innerHTML = `${errorIcon} ${emailValidation.errorMessage}`;
         emailBox.classList.add('invalid');
         isValid = false
     }
     else {
         emailBox.classList.add('valid');
-
-
     }
-
-    // Submissão do formulário se tudo estiver válido
     if (isValid) {
         form.submit();
     }
 });
-
-
 function numeroRastreioIsValid(value) {
 
     let isValid = true;
@@ -78,10 +70,8 @@ function numeroRastreioIsValid(value) {
         errorMessage = 'O nome do produto deve ter 5 caracteres';
     }
 
-
     return { isValid, errorMessage };
 }
-
 function nomeProdutoIsValid(value) {
 
     let isValid = true;
@@ -94,12 +84,9 @@ function nomeProdutoIsValid(value) {
     
     return { isValid, errorMessage };
 }
-
-
 function emailIsValid(value) {
     let isValid = true;
     let errorMessage = '';
-
     const isEmpty = (val) => {
         return val === '';
     };
@@ -110,14 +97,10 @@ function emailIsValid(value) {
         return { isValid, errorMessage };
     }
 
-
-
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
         isValid = false;
         errorMessage = 'Digite um email valido';
-
     }
-
 
     return { isValid, errorMessage }
 }

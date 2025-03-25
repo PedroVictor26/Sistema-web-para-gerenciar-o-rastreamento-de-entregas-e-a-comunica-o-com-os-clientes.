@@ -24,10 +24,10 @@
 
         <div id="resultados"></div>
 
-        <a class="btn btn-primary btn lg" href="tela_cadastro.php">Cadastro</a>
+        <a class="btn btn-primary btn lg" href="index.html">Cadastro</a>
     </div>
 
-    <script>
+        <script>
         $(document).ready(function() {
             $("#buscaInput").on("input", function() {
                 let busca = $(this).val();
@@ -36,11 +36,11 @@
                         url: "pesquisar_rastreio.php",
                         method: "POST",
                         data: {
-                            busca: busca
+                            busca: busca    
                         },
                         success: function(data) {
                             $("#resultados").html(data);
-                            setupDeleteButtons(); // Adiciona o evento de clique aos botões de exclusão
+                            setupDeleteButtons();
                         }
                     });
                 } else {
@@ -60,7 +60,7 @@
                         },
                         success: function(data) {
                             $("#resultados").html(data);
-                            setupDeleteButtons(); // Adiciona o evento de clique aos botões de exclusão
+                            setupDeleteButtons();
                         }
                     });
                 } else {
